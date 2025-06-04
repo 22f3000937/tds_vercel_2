@@ -40,8 +40,12 @@ class Job(BaseModel):
     
 
 jobs = list()  # Initialize an empty list to store jobs
-@app.post("/api/create")
+@app.post("/api/create") # Endpoint to create a job
 def create(job: Job):
     jobs.append(job)
 
     return {"message": "Job created successfully", "job": job}
+
+@app.get("/api/jobs") # Endpoint to read all jobs
+def get_jobs():
+    return {"jobs": jobs}
