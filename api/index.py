@@ -36,8 +36,7 @@ from pydantic import BaseModel
 from datetime import datetime
 class Job(BaseModel):
     name: str
-    cost: float
-    started_at: datetime
+    
 
 jobs = list()  # Initialize an empty list to store jobs
 @app.post("/api/create")
