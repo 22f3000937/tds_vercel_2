@@ -36,6 +36,7 @@ from pydantic import BaseModel
 from datetime import datetime
 class Job(BaseModel):
     name: str
+    cost: float
     
 
 jobs = list()  # Initialize an empty list to store jobs
