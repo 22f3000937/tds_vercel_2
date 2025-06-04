@@ -31,3 +31,17 @@ def search(request: Request):
 
     print(params) # Print the list of parameters to the console
     return {"params": params} 
+
+from pydantic import BaseModel
+from datetime import datetime
+class Job(BaseModel):
+    name: str
+    cost: float
+    started_at: datetime
+
+jobs = list()  # Initialize an empty list to store jobs
+@app.post("/api/create")
+def create(job: Job):
+    jobs.append(job)
+
+    return {"message": "Job created successfully", "job": job}
