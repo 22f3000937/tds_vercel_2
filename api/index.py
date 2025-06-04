@@ -49,3 +49,11 @@ def create(job: Job):
 @app.get("/api/jobs") # Endpoint to read all jobs
 def get_jobs():
     return {"jobs": jobs}
+
+@app.delete("/api/delete/{job_no}") # Endpoint to delete a job by job no.
+def delete(job_no: int):
+    if 0 <= job_no < len(jobs):
+        deleted_job = jobs.pop(job_no)
+        return {"message": "Job deleted successfully", "job": deleted_job}
+    else:
+        return {"message": "Job not found"}, 404
